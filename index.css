@@ -1,8 +1,9 @@
-@import url(../vendor/normalize.css);
-@import url(../vendor/fonts/fonts.css);
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
 
 .body {
     background-color: #000000;
+    height: 100%;
 }
 
 .page {
@@ -160,12 +161,11 @@
     border: none;
     width: 22px;
     height: 19px;
-    padding: 0;
-
 }
 
 .footer {
     margin: 66px 0 60px 0;
+    padding: 0;
 }
 
 .footer__copyright {
