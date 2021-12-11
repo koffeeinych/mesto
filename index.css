@@ -1,0 +1,184 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+.body {
+    background-color: #000000;
+}
+
+.page {
+    margin: 0 auto;
+    max-width: 880px;
+    min-width: 320px;
+    color: #FFFFFF;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+}
+
+.header {
+    margin: 45px 0 0 0;
+}
+
+.header__line {
+    border-bottom: 1px solid #545454;
+}
+
+.header__logo {
+    margin-bottom: 40px;
+    width: 142px;
+    height: 33px;    
+}
+
+.profile {
+    margin: 40px 0 0 0;
+    display: grid;
+    grid-template-columns: 120px 336px 1fr;
+    gap: 30px;
+    align-items: center;
+    
+}
+
+.profile__avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.profile__info {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 24px;
+    grid-gap: 16px 18px;
+    grid-template-areas: 
+    "name button"
+    "description .";
+    align-items: center;
+}
+
+.profie__info-name {
+    grid-area: name;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    max-width: 294px;
+    font-style: normal;
+    font-weight: 500;
+    height: auto;
+    font-size: 42px;
+    line-height: 48px;
+}
+
+.profile__info-description {
+    grid-area: description;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    max-width: 336px;
+    font-style: normal;
+    font-weight: 500;
+    height: auto;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.profile__edit-button {
+    padding: 0;
+    grid-area: button;
+    background-image: url(./images/EditButton.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+.profile__add-button {
+    background-image: url(./images/AddButton.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #FFFFFF;
+    background-color: transparent;
+    justify-self: end;
+    background-color: transparent;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+.elements {
+    margin: 50px 0 0 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 282px);
+    gap: 20px 17px;
+    justify-content: center;
+}
+
+.element {
+    border-radius: 10px;
+    color: #000000;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.element__image {
+    width: 282px;
+    height: 282px;
+}
+
+.element__group {
+    margin: 25px 15px 31px 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 246px;
+}
+
+.element__title {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-style: normal;
+    font-weight: 900;
+    height: auto;
+    font-size: 24px;
+    line-height: 29px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.element__like-button {
+    background-image: url(./images/heartlike.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+
+}
+
+.footer {
+    margin: 66px 0 60px 0;
+}
+
+.footer__copyright {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    max-width: 318px;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+}
