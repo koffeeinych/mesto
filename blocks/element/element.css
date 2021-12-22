@@ -1,0 +1,10 @@
+.element {
+    margin: 0;
+    padding: 0;
+    width: 282px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #000000;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="body">
@@ -64,15 +64,27 @@
         <div class="element">
           <img class="element__image" src="./images/karachaevo-cherkesk.jpg" alt="Крепость в Карачаево-черкеск">
           <div class="element__group">
-            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <h2 class="element__title">Карачаево-Черкесcия</h2>
             <button class="element__like-button" type="button"></button>
           </div> 
         </div>
         </section>
+      </main>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
-        </footer>        
-    </main>
-  </div>  
+        </footer>
+        <section class="popup">
+          <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+              <form class="popup__form">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="popup__field-name" type="text" value="Жак-Ив Кусто"></input>
+                <input class="popup__field-job" type="text" value="Исследователь океана"></input>
+                <button class="popup__submit" type="submit">Сохранить</button>
+              </form>
+          </div>
+        </section>            
+  </div>
+  <script src="./index.js"></script> 
 </body>
 </html>      
