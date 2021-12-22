@@ -1,0 +1,9 @@
+.page {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0;
+    color: #FFFFFF;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+}
