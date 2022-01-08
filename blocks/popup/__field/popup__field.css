@@ -1,4 +1,4 @@
-.popup__field-job {
+.popup__field {
     margin: 30px 0 0 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -7,4 +7,14 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+.popup__field:first-of-type {
+    margin: 54px 0 0 0;
+}
+
+@media screen and (max-width: 879px) {    
+    .popup__field:first-of-type {
+        margin: 75px 0 0 0;
+    }
 }

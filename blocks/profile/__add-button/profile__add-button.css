@@ -6,6 +6,7 @@
     height: 50px;
     padding: 0;
     border: 2px solid #FFFFFF;
+    border-radius: 2px;
     background-color: transparent;
     justify-self: end;
     box-shadow: none;
@@ -22,6 +23,6 @@
 @media screen and (max-width: 879px) {    
     .profile__add-button {
         width: 100%;
-        justify-self: center;
+        background-size: 16px 16px;
     }
 }

@@ -1,5 +1,7 @@
 .popup__submit {
     background-color: #000000;
+    border: none;
+    border-radius: 2px;
     color: #FFFFFF;
     background-repeat: no-repeat;
     min-height: 50px;

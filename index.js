@@ -17,8 +17,8 @@ popupCloseButton.addEventListener('click', closePopup);
 
 
 const formElement = document.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__field-name');
-const jobInput = document.querySelector('.popup__field-job');
+const nameInput = document.getElementById('field-name');
+const jobInput = document.getElementById('field-job');
 const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__info-description');
 
