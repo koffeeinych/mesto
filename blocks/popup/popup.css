@@ -8,9 +8,13 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s linear, opacity 0.5s linear;
 }
 
 .popup_opened {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
 }
