@@ -4,7 +4,6 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const popupAddButton = document.querySelector('.profile__add-button')
 const popupAddCard = document.querySelector('.popup_type_add-card')
 const popupCloseAdd = popupAddCard.querySelector('.popup__close')
-const popupCloseImg = document.querySelector('.popup__close-image')
 
 
 function togglePopup(popup) {
@@ -79,8 +78,9 @@ function createCard(cardData) {
   const elementImage = cardElement.querySelector('.element__image')
   const elementName = cardElement.querySelector('.element__title')
   const deleteButton = cardElement.querySelector('.element__delete-button')
-  const likeButton = cardElement.querySelector('.element__like-button')
+  const likeButton = cardElement.querySelector('.element__like-button')  
 
+  const popupCloseImg = popupImage.querySelector('.popup__close')
   const popupImg = popupImage.querySelector('.popup__img')
   const popupCaption = popupImage.querySelector('.popup__caption')
       
@@ -93,8 +93,13 @@ function createCard(cardData) {
     popupImg.src = cardData.link
     popupImg.alt = cardData.name
     popupCaption.textContent = cardData.name
-  })  
-  popupCloseImg.addEventListener('click', () => togglePopup(elementImage))
+  })
+  
+    function closeImage() {
+      popupImage.classList.remove('popup_opened')
+    }
+    popupCloseImg.addEventListener('click', closeImage)
+        
 
   function deleteHandler() {
     cardElement.remove()
