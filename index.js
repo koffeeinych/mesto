@@ -71,7 +71,7 @@ const initialCards = [
 
 const elements = document.querySelector('.elements')
 const elementTemplate = document.querySelector('.element__template').content.querySelector('.element')
-const popupImage = document.querySelector('.popup__image')
+const popupImage = document.querySelector('.popup_fig-image')
 
 function createCard(cardData) {
   const cardElement = elementTemplate.cloneNode(true)
