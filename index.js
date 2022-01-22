@@ -4,7 +4,8 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const popupAddButton = document.querySelector('.profile__add-button')
 const popupAddCard = document.querySelector('.popup_type_add-card')
 const popupCloseAdd = popupAddCard.querySelector('.popup__close')
-
+const popupImage = document.querySelector('.popup_fig-image')
+const popupCloseImg = popupImage.querySelector('.popup__close')
 
 function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
@@ -16,6 +17,8 @@ popupCloseButton.addEventListener('click', () => togglePopup(popupEdit))
 popupAddButton.addEventListener('click', () => togglePopup(popupAddCard))
 popupCloseAdd.addEventListener('click', () => togglePopup(popupAddCard))
 
+popupCloseImg.addEventListener('click', () => togglePopup(popupImage))
+
 
 const formEdit = document.querySelector('.popup__form');
 const formAddCard = popupAddCard.querySelector('.popup__form');
@@ -26,52 +29,26 @@ const cardLinkInput = document.getElementById('element-link')
 const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__info-description');
 
-function formInput() {
+function getFormInput() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
 
-popupEditButton.addEventListener('click', formInput);
+popupEditButton.addEventListener('click', getFormInput);
 
-function formSubmitHandler(evt) {
+function handlerFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     togglePopup(popupEdit);
 }
 
-formEdit.addEventListener('submit', formSubmitHandler);
+formEdit.addEventListener('submit', handlerFormSubmit);
 
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
 
 const elements = document.querySelector('.elements')
 const elementTemplate = document.querySelector('.element__template').content.querySelector('.element')
-const popupImage = document.querySelector('.popup_fig-image')
+
 
 function createCard(cardData) {
   const cardElement = elementTemplate.cloneNode(true)
@@ -80,12 +57,12 @@ function createCard(cardData) {
   const deleteButton = cardElement.querySelector('.element__delete-button')
   const likeButton = cardElement.querySelector('.element__like-button')  
 
-  const popupCloseImg = popupImage.querySelector('.popup__close')
   const popupImg = popupImage.querySelector('.popup__img')
   const popupCaption = popupImage.querySelector('.popup__caption')
       
   elementName.textContent = cardData.name
   elementImage.src = cardData.link
+  elementImage.alt = cardData.link
 
   elementImage.addEventListener('click', () => {
 
@@ -95,22 +72,16 @@ function createCard(cardData) {
     popupCaption.textContent = cardData.name
   })
   
-    function closeImage() {
-      popupImage.classList.remove('popup_opened')
-    }
-    popupCloseImg.addEventListener('click', closeImage)
-        
-
-  function deleteHandler() {
+  function handlerDeleteButton() {
     cardElement.remove()
   }
-  deleteButton.addEventListener('click', deleteHandler)
+  deleteButton.addEventListener('click', handlerDeleteButton)
 
-  function likeHandler() {
+  function handlerLikeButton() {
     likeButton.classList.toggle('element__like-button_active')
   }
 
-  likeButton.addEventListener('click', likeHandler)
+  likeButton.addEventListener('click', handlerLikeButton)
 
   elements.prepend(cardElement)
   }
