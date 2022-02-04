@@ -24,7 +24,7 @@ const elementTemplate = document.querySelector('.element__template').content.que
 function openPopup(popup) {
   popup.classList.add('popup_opened')
   document.addEventListener('keydown', closeEscPopup)  
-  document.addEventListener('mousedown', closeOverlayPopup)
+  document.addEventListener('mousedown', () => closeOverlayPopup(popup))
 }
 
 function closePopup(popup) {
@@ -35,20 +35,17 @@ function closePopup(popup) {
 
 function closeEscPopup (event) {
   const keyCode = event.keyCode; 
+  const openedPopup = document.querySelector('.popup_opened')
 	if (keyCode === 27) {		
 		event.preventDefault();  
-    openedPopup = document.querySelector('.popup_opened')
+    
 	}
   closePopup(openedPopup)
 }
 
-function closeOverlayPopup (event) {
-  if (event.target === popup) {	
-    openedPopup = document.querySelector('.popup_opened')
-    event.preventDefault();
+function closeOverlayPopup (popup) {  
+    closePopup(popup)
     }
-    closePopup(openedPopup)
-}
 
 popupEditButton.addEventListener('click', () => openPopup(popupEdit))
 popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))
@@ -69,7 +66,6 @@ function handlerFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    openPopup(popupEdit)
     closePopup(popupEdit)       
 }
 
@@ -87,12 +83,14 @@ function createCard(cardData) {
 
   elementImage.addEventListener('click', () => openPopup(popupImage))
   popupCloseImg.addEventListener('click', () => closePopup(popupImage))
+
           
   elementName.textContent = cardData.name
   elementImage.src = cardData.link
   elementImage.alt = cardData.link  
 
-  elementImage.addEventListener('click', () => {
+  elementImage.addEventListener('click', (event) => {
+    event.stopPropagation()
     openPopup(popupImage)
     popupImg.src = cardData.link
     popupImg.alt = cardData.name
