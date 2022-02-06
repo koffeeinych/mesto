@@ -19,33 +19,36 @@ const profileJob = document.querySelector('.profile__info-description');
 
 const elements = document.querySelector('.elements')
 const elementTemplate = document.querySelector('.element__template').content.querySelector('.element')
+
+
  
 
 function openPopup(popup) {
   popup.classList.add('popup_opened')
-  document.addEventListener('keydown', closeEscPopup)  
-  document.addEventListener('mousedown', () => closeOverlayPopup(popup))
+  document.addEventListener('keydown', closeEscPopup)
+  popup.addEventListener('mousedown', (event) => closeOverlayPopup(event))  
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEscPopup)
-  document.removeEventListener('mousedown', closeOverlayPopup)
+  popup.removeEventListener('mousedown', (event) => closeOverlayPopup(event))
 }
 
-function closeEscPopup (event) {
-  const keyCode = event.keyCode; 
-  const openedPopup = document.querySelector('.popup_opened')
-	if (keyCode === 27) {		
-		event.preventDefault();  
-    
+function closeEscPopup (event) {    
+	if (event.key === "Escape") {		
+    const openedPopup = document.querySelector('.popup_opened')	
+    closePopup(openedPopup) 
+    event.preventDefault(); 
 	}
-  closePopup(openedPopup)
-}
+}/* Не знаю почему, но c openedPopup функция работает прекрасно, 
+без него выполняется только на первом профиле.*/ 
 
-function closeOverlayPopup (popup) {  
-    closePopup(popup)
-    }
+function closeOverlayPopup (event) {
+  if (event.target.classList.contains('popup_opened')) {
+        closePopup(popup)
+      }
+}/*С этой функцией первый попап закрывается по оверлею прекрасно*/
 
 popupEditButton.addEventListener('click', () => openPopup(popupEdit))
 popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))
@@ -53,6 +56,10 @@ popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))
 
 popupAddButton.addEventListener('click', () => openPopup(popupAddCard))
 popupCloseAdd.addEventListener('click', () => closePopup(popupAddCard))
+
+//popupAddCard.addEventListener('mousedown', (event) => closeOverlayPopup(event))
+//popupAddCard.removeEventListener('mousedown', (event) => closeOverlayPopup(event))
+/*попытался добавить слушателей но эффекта 0*/
 
 function getFormInput() {
     nameInput.value = profileName.textContent;
@@ -90,7 +97,6 @@ function createCard(cardData) {
   elementImage.alt = cardData.link  
 
   elementImage.addEventListener('click', (event) => {
-    event.stopPropagation()
     openPopup(popupImage)
     popupImg.src = cardData.link
     popupImg.alt = cardData.name
@@ -124,4 +130,3 @@ formAddCard.addEventListener('submit', (event) => {
   formAddCard.reset();
   toggleButton(formAddCard, ObjectToogleButton)
 })
-
