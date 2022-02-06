@@ -1,7 +1,3 @@
-const ERRORS = {
-    passwordsMismatch: 'Пароли не совпадают'
-};
-
 function submitForm(event) {
     event.preventDefault();
 }
@@ -15,7 +11,7 @@ function showError(input, errorContainer, errorText, { inputErrorClass, errorVis
 function hideError(input, errorContainer, { inputErrorClass, errorVisibleClass }) {
     input.classList.remove(inputErrorClass);
     errorContainer.classList.remove(errorVisibleClass);
-    errorContainer.textContent = 'Вы пропустиле это поле';
+    errorContainer.textContent = '';
 }
 
 function toggleButton(form, { buttonSelector, inactiveButtonClass }) {
@@ -40,11 +36,6 @@ function validateInput(form, input, classes) {
 
     let isValid = input.validity.valid;
     let errorText = input.validationMessage;
-
-    if (input.id === 'passwordRepeat') {
-        isValid = checkPasswords(form, input);
-        errorText = ERRORS['passwordsMismatch'];
-    }
 
     if (isValid) {
         hideError(input, errorContainer, classes);

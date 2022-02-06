@@ -13,6 +13,11 @@
     margin: 54px 0 0 0;
 }
 
+.popup__field_error {
+    opacity: 0.2;
+    border-bottom: 1px solid #ff0000;
+}
+
 @media screen and (max-width: 879px) {    
     .popup__field:first-of-type {
         margin: 75px 0 0 0;

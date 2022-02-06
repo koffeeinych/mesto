@@ -26,13 +26,13 @@ const elementTemplate = document.querySelector('.element__template').content.que
 function openPopup(popup) {
   popup.classList.add('popup_opened')
   document.addEventListener('keydown', closeEscPopup)
-  popup.addEventListener('mousedown', (event) => closeOverlayPopup(event))  
+  popup.addEventListener('mousedown', closeOverlayPopup)  
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEscPopup)
-  popup.removeEventListener('mousedown', (event) => closeOverlayPopup(event))
+  popup.removeEventListener('mousedown', closeOverlayPopup)
 }
 
 function closeEscPopup (event) {    
@@ -49,7 +49,7 @@ function closeOverlayPopup (event) {
         closePopup(openedPopup)
         event.preventDefault(); 
       }
-}      
+    }      
 
 popupEditButton.addEventListener('click', () => openPopup(popupEdit))
 popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))

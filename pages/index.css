@@ -32,35 +32,4 @@
 @import url(../blocks/popup/__container-image/popup__container-image.css);
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
-
-
-.popup__field_error {
-    opacity: 0.2;
-    border-bottom: 1px solid #ff0000;
-}
-
-.error-message {
-    color: #ff0000;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    padding: 0;
-    opacity: 0;
-}
-
-.error-message_visible {
-    opacity: 1;
-}
-
-.popup__submit_disabled {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-    opacity: 0.2;
-}
-
-.popup__submit_disabled:hover {
-    opacity: 0.2;
-    cursor: auto;
-}
+@import url(../blocks/error-message/error-message.css);
