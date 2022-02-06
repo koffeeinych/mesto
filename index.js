@@ -41,14 +41,15 @@ function closeEscPopup (event) {
     closePopup(openedPopup) 
     event.preventDefault(); 
 	}
-}/* Не знаю почему, но c openedPopup функция работает прекрасно, 
-без него выполняется только на первом профиле.*/ 
+} 
 
 function closeOverlayPopup (event) {
   if (event.target.classList.contains('popup_opened')) {
-        closePopup(popup)
+        const openedPopup = document.querySelector('.popup_opened')
+        closePopup(openedPopup)
+        event.preventDefault(); 
       }
-}/*С этой функцией первый попап закрывается по оверлею прекрасно*/
+}      
 
 popupEditButton.addEventListener('click', () => openPopup(popupEdit))
 popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))
@@ -56,10 +57,6 @@ popupCloseEdit.addEventListener('click', () => closePopup(popupEdit))
 
 popupAddButton.addEventListener('click', () => openPopup(popupAddCard))
 popupCloseAdd.addEventListener('click', () => closePopup(popupAddCard))
-
-//popupAddCard.addEventListener('mousedown', (event) => closeOverlayPopup(event))
-//popupAddCard.removeEventListener('mousedown', (event) => closeOverlayPopup(event))
-/*попытался добавить слушателей но эффекта 0*/
 
 function getFormInput() {
     nameInput.value = profileName.textContent;
