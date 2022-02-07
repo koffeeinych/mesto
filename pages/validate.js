@@ -65,7 +65,7 @@ function enableValidation({ formSelector, inputSelector, ...rest }) {
 }
 
 
-enableValidation({
+const configValidation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__field',
     errorSelector: '.error-message',
@@ -73,4 +73,4 @@ enableValidation({
     inputErrorClass: 'popup__field_error',
     errorVisibleClass: 'error-message_visible',
     inactiveButtonClass: 'popup__submit_disabled'
-});
+};

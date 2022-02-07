@@ -38,8 +38,7 @@ function closePopup(popup) {
 function closeEscPopup (event) {    
 	if (event.key === "Escape") {		
     const openedPopup = document.querySelector('.popup_opened')	
-    closePopup(openedPopup) 
-    event.preventDefault(); 
+    closePopup(openedPopup)
 	}
 } 
 
@@ -47,7 +46,6 @@ function closeOverlayPopup (event) {
   if (event.target.classList.contains('popup_opened')) {
         const openedPopup = document.querySelector('.popup_opened')
         closePopup(openedPopup)
-        event.preventDefault(); 
       }
     }      
 
