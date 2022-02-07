@@ -1,4 +1,4 @@
-const configValidation = {
+const validateConfig ={
     formSelector: '.popup__form',
     inputSelector: '.popup__field',
     errorSelector: '.error-message',
@@ -6,39 +6,35 @@ const configValidation = {
     inputErrorClass: 'popup__field_error',
     errorVisibleClass: 'error-message_visible',
     inactiveButtonClass: 'popup__submit_disabled'
-};
-
-function submitForm(event) {
-    event.preventDefault();
 }
 
-function showError(input, errorContainer, errorText, {inputErrorClass, errorVisibleClass}) {
+function submitForm(event, submitButton) {
+    event.preventDefault();
+    disableButton(submitButton);
+}
+
+function showError(input, errorContainer, errorText, { inputErrorClass, errorVisibleClass }) {
     input.classList.add(inputErrorClass);
     errorContainer.classList.add(errorVisibleClass);
     errorContainer.textContent = errorText;
 }
 
-function hideError(input, errorContainer, {inputErrorClass, errorVisibleClass }) {
+function hideError(input, errorContainer, { inputErrorClass, errorVisibleClass }) {
     input.classList.remove(inputErrorClass);
-    errorContainer.classList.remove(errorVisibleClass); 
+    errorContainer.classList.remove(errorVisibleClass);
     errorContainer.textContent = '';
 }
 
-function toggleButton(form, button, {inactiveButtonClass }) {
-    const isFormValid = form.checkValidity();
-
-    if (isFormValid) {
-        button.classList.remove(inactiveButtonClass);
-        button.removeAttribute('disabled');
-    } else {
-        button.classList.add(inactiveButtonClass);
-        button.setAttribute('disabled', 'true');
-    }
+function disableButton(buttonElement) {
+    buttonElement.classList.add(validateConfig.inactiveButtonClass);
+    buttonElement.disabled = true;
 }
-const ObjectToogleButton = {
-    buttonSelector: '.button__submit',
-    inactiveButtonClass: '.button__submit_disabled'
-};
+
+
+function enableButton(buttonElement) {
+    buttonElement.classList.remove(validateConfig.inactiveButtonClass);
+    buttonElement.disabled = false;
+}
 
 function validateInput(form, input, classes) {
     const errorContainer = form.querySelector(`#error-${input.id}`);
@@ -51,23 +47,28 @@ function validateInput(form, input, classes) {
     } else {
         showError(input, errorContainer, errorText, classes);
     }
-    toggleButton(form, button, classes);
 }
 
-function enableValidation(form, configValidation) {
+function enableValidation({ formSelector, inputSelector, buttonSelector, ...rest }) {
     const forms = document.querySelectorAll(formSelector);
 
     forms.forEach(form => {
-        form.addEventListener('submit', submitForm);
+        const submitButton = form.querySelector(buttonSelector);
+        form.addEventListener('submit', (e) => submitForm(e, submitButton));
+        if (!form.checkValidity()) disableButton(submitButton);
 
-        const inputs = form.querySelectorAll(inputSelector);        
-        const button = form.querySelector(buttonSelector);
+        const inputs = form.querySelectorAll(inputSelector);
 
         inputs.forEach(input => {
             input.addEventListener('input', () => {
                 validateInput(form, input, rest);
+                if (!form.checkValidity()) {
+                    disableButton(submitButton);
+                } else {
+                    enableButton(submitButton);
+                }
             });
-            toggleButton(form, button, rest);
         });
     });
 }
+enableValidation(validateConfig);

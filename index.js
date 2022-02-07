@@ -122,8 +122,5 @@ formAddCard.addEventListener('submit', (event) => {
     link: cardLinkInput.value
   })
   formAddCard.reset();
-  toggleButton(formAddCard)
-  closePopup(popupAddCard);
-  
-  
+  closePopup(popupAddCard);  
 })
